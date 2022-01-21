@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chatbot</title>
+<script type="text/javascript" src="chat/main.js"></script>
+<link rel="stylesheet" href="chat/style.css" />
+
+</head>
+<body>
+
+
+      
+      
+         
+  <div class="webflow-style-input">
+    <input class="" type="email" placeholder="What's your email?"></input>
+   
+  </div>
+	   
+		
+		
+		<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+
+  <form action="javascript:void(0);" class="form-container">
+ 
+    <h1 style="color:white;"> how can i help ya?</h1>
+
+    
+	<div id="abc">
+	<div id="messages"></div>
+   </div>
+   
+  <div class="webflow-style-input">
+    <input  id="input" type="text" placeholder="Say something..." autocomplete="off"/>
+	 <button type="submit"><i class="icon ion-android-arrow-forward"></i></button>
+  </div>
+  <br>
+   
+	
+
+  
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  
+  </form>
+  
+</div>
+ <script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script>
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+		
+		
+		
+</body>
+</html>

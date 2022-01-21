@@ -1,0 +1,331 @@
+/* ====================================================
+Recreating the email field from https://webflow.com/cms. Just an experiment - not as cross-browser friendly as the original.
+Changed:
+- animated gradient bar to :after element
+- flexbox for layout
+==================================================== */
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  border-style: none;
+  background: transparent;
+  outline: none;
+}
+
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+
+
+h1.demo {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  color: #f5f6ff;
+}
+
+a.demo {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: rgba(202, 205, 239, 0.8);
+  margin-bottom: 3rem;
+}
+
+.demo-flex-spacer {
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+}
+
+.container1 {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  height: 100vh;
+  max-width: 1600px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+.webflow-style-input {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+ 
+  -webkit-box-direction: normal;
+          flex-direction: row;
+		 
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+  background: rgba(57, 63, 84, 0.8);
+}
+.webflow-style-input:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  height: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: -webkit-gradient(linear, left top, right top, from(#B294FF), color-stop(#57E6E6), color-stop(#FEFFB8), color-stop(#57E6E6), color-stop(#B294FF), to(#57E6E6));
+  background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+  background-size: 500% auto;
+  -webkit-animation: gradient 3s linear infinite;
+          animation: gradient 3s linear infinite;
+}
+
+.webflow-style-input input {
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+  color: #BFD2FF;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+}
+.webflow-style-input input::-webkit-input-placeholder {
+  color: #7881A1;
+}
+
+.webflow-style-input button {
+  color: #7881A1;
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  -webkit-transition: color .25s;
+  transition: color .25s;
+}
+.webflow-style-input button:hover {
+  color: #BFD2FF;
+}
+
+
+::-webkit-input-placeholder { 
+	color: #711 
+}
+#main { 
+	position: fixed; 
+	top: 40%; 
+	right: 200px; 
+	width: 400px; 
+	border: 0px solid #421; 
+	padding: 40px; 
+}
+#main div { 
+	margin: 10px; 
+} 
+
+
+* {
+ font-family: Arial;
+ font-size: 12pt;
+}
+.chat {
+	
+ width: 400px;
+ height: 90%;
+ position: fixed;
+ overflow: scroll;
+}
+
+::-webkit-input-placeholder { 
+    color: #711 
+}
+#main { 
+    position: fixed; 
+    top: 40%; 
+    right: 200px; 
+    width: 400px; 
+    border: 0px solid #421; 
+    padding: 40px; 
+}
+#main div { 
+    margin: 10px; 
+} 
+
+.actions {
+ position: fixed;
+ bottom: 0;
+ display: block;
+ width: 100%;
+}
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+
+
+  display: none;
+  position: fixed;
+  bottom: 0%;
+  right: 15px;
+  border: 3px solid grey;
+  z-index: 9;
+  
+  
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  	  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
+ 
+  
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* Full-width textarea */
+.form-container #abc {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+  max-height:200px;
+   overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+.actions #input{
+ height: 30px;
+ display: block;
+ width: 100%;
+ outline: 0;
+ border-top: 0;
+ border-left: 0;
+ border-right: 0;
+}
+#messages div {
+ max-width: 60%;
+ display: block;
+ margin: 5px;
+ padding: 10px;
+ border-radius: 7px;
+  
+}
+#messages #bot {
+ text-align: left;
+ margin-right: auto;
+ background: #001f3f;
+ color: white;
+}
+#messages #self {
+ text-align: right;
+ margin-left: auto;
+ background: #DDD
+}
